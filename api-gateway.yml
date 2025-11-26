@@ -13,12 +13,14 @@ spring:
             - Path=/api/users/**
           filters:
             - RewritePath=/api/users/(?<path>.*), /${path}
+            
         - id: product-service
           uri: lb://product-service
           predicates:
             - Path=/api/products/**
           filters:
             - RewritePath=/api/products/(?<path>.*), /${path}
+            
         - id: order-service
           uri: lb://order-service
           predicates:
@@ -30,3 +32,11 @@ eureka:
   client:
     service-url:
       defaultZone: http://service-discovery:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,routes,gateway

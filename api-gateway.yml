@@ -32,6 +32,8 @@ eureka:
   client:
     service-url:
       defaultZone: http://service-discovery:8761/eureka/
+    rigister-with-eureka: true
+    fetch-registry: true
   instance:
     prefer-ip-address: true
 
@@ -39,4 +41,12 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info,routes,gateway
+        include: "*"
+  endpoint:
+    gateway:
+      enabled: true
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.cloud.gateway.route: DEBUG

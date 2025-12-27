@@ -11,22 +11,18 @@ spring:
           uri: lb://user-service
           predicates:
             - Path=/api/users/**
-          filters:
-            - RewritePath=/api/users/(?<path>.*), /${path}
+         
             
         - id: product-service
           uri: lb://product-service
           predicates:
             - Path=/api/products/**
-          filters:
-            - RewritePath=/api/products/(?<path>.*), /${path}
-            
+         
         - id: order-service
           uri: lb://order-service
           predicates:
             - Path=/api/orders/**
-          filters:
-            - RewritePath=/api/orders/(?<path>.*), /${path}
+         
 
 eureka:
   client:
